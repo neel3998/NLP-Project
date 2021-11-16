@@ -4,8 +4,11 @@ Download the pre-trained model files that are required to run the application fr
 
 # Requirements
 streamlit(1.2.0)
+
 transformers(4.12.3)
+
 huggingface
+
 numpy
 
 # How to run the app
