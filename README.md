@@ -3,13 +3,11 @@
 Download the pre-trained model files that are required to run the application from the below link:
 
 # Requirements
-streamlit(1.2.0)
+streamlit(1.2.0) pip install streamlit
 
-transformers(4.12.3)
+transformers(4.12.3) pip install transformers[tf-cpu]
 
-huggingface
-
-numpy
+numpy pip install numpy
 
 # How to run the app
 1. Clone the repository
