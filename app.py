@@ -35,7 +35,7 @@ def set_png_as_page_bg(png_file):
     
     st.markdown(page_bg_img, unsafe_allow_html=True)
     return
-set_png_as_page_bg('E://Sem 7//NLP//Webapp//Background_image.jpg')
+# set_png_as_page_bg('E://Sem 7//NLP//Webapp//Background_image.jpg')
 
 components.html(
     """
