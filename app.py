@@ -107,4 +107,4 @@ with st.spinner('Finding Answer...'):
         else:
             desty1='en'
         
-        st.success(translator.translate(str(answers['answer']) ,dest=desty1).text)
+        st.success(answers['answer'])
