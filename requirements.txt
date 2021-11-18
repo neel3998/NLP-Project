@@ -1,4 +1,4 @@
 transformers
 googletrans
-pytorch
+torch
 tensorflow 
