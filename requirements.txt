@@ -2,3 +2,4 @@ transformers
 googletrans
 torch
 tensorflow 
+sklearn
