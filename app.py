@@ -1,5 +1,7 @@
+
 import streamlit as st
 import base64
+import time
 from transformers import pipeline
 import streamlit.components.v1 as components
 from googletrans import Translator
@@ -35,7 +37,7 @@ def set_png_as_page_bg(png_file):
     
     st.markdown(page_bg_img, unsafe_allow_html=True)
     return
-# set_png_as_page_bg('E://Sem 7//NLP//Webapp//Background_image.jpg')
+set_png_as_page_bg('E://Sem 7//NLP//Webapp//Background_image.jpg')
 
 components.html(
     """
@@ -85,20 +87,36 @@ components.html(
 @st.cache(allow_output_mutation=True)
 
 def load_model():
-    model=pipeline('question-answering')
-    return model
     
-qa=load_model()
+    # model=pipeline('question-answering')
+    
+    print(1)
+    return 
+import ast
+import os
+mod=load_model()
 st.title("Try out our application!!")
 articles=st.text_area('Please enter your article')
 quest =st.text_input('Ask your question based on the article')
 model_name=st.radio('Select Model',['xlm-roberta', 'mbert', 'bert'])
 Lang=st.radio('Select Answer Text Language',['Hindi','English','Tamil'])
 button=st.button('Answer')
+@st.cache  # 👈 Added this
+def expensive_computation():
+    time.sleep(2)  # This makes the function take 2s to run
+    # exec(open("final_1.py",encoding='utf-8').read())
+    os.system('final_1.py')
+    print(2)
+    file1 = open("answers.txt", "r", encoding="utf-8")
+    contents = file1.read()
+    return contents
+
+
 
 with st.spinner('Finding Answer...'):
     if button and articles:
-        answers=qa(question=quest, context=articles)
+        a=expensive_computation()
+        answers = ast.literal_eval(a)
         
         if Lang=='Hindi':
             desty1='hi'
@@ -107,4 +125,5 @@ with st.spinner('Finding Answer...'):
         else:
             desty1='en'
         
-        st.success(answers['answer'])
+        st.success(answers)
+# translator.translate(str(answers['answer']) ,dest=desty1).text
