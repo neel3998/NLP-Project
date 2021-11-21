@@ -1,8 +1,11 @@
 # NLP-Project
 
 # Demo of App:
+Image 1
+
 ![image](https://user-images.githubusercontent.com/74199478/142750765-d13e7e0f-dcde-4e40-a202-80b7bfe4f66d.png)
 
+Image 2
 ![image](https://user-images.githubusercontent.com/74199478/142750780-72ad952f-99d0-4350-8625-fc59322e549a.png)
 
 Download the pre-trained model files that are required to run the application from the below link:
