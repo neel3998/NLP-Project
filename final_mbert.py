@@ -329,39 +329,39 @@ if __name__ ==  '__main__':
         drop_last=False
     )
     #print("LOading Model")
-    import requests
+#     import requests
 
-    def download_file_from_google_drive(id, destination):
-        URL = "https://docs.google.com/uc?export=download"
+#     def download_file_from_google_drive(id, destination):
+#         URL = "https://docs.google.com/uc?export=download"
 
-        session = requests.Session()
+#         session = requests.Session()
 
-        response = session.get(URL, params = { 'id' : id }, stream = True)
-        token = get_confirm_token(response)
+#         response = session.get(URL, params = { 'id' : id }, stream = True)
+#         token = get_confirm_token(response)
 
-        if token:
-            params = { 'id' : id, 'confirm' : token }
-            response = session.get(URL, params = params, stream = True)
+#         if token:
+#             params = { 'id' : id, 'confirm' : token }
+#             response = session.get(URL, params = params, stream = True)
 
-        save_response_content(response, destination)    
+#         save_response_content(response, destination)    
 
-    def get_confirm_token(response):
-        for key, value in response.cookies.items():
-            if key.startswith('download_warning'):
-                return value
+#     def get_confirm_token(response):
+#         for key, value in response.cookies.items():
+#             if key.startswith('download_warning'):
+#                 return value
 
-        return None
+#         return None
 
-    def save_response_content(response, destination):
-        CHUNK_SIZE = 32768
+#     def save_response_content(response, destination):
+#         CHUNK_SIZE = 32768
 
-        with open(destination, "wb") as f:
-            for chunk in response.iter_content(CHUNK_SIZE):
-                if chunk: # filter out keep-alive new chunks
-                    f.write(chunk)
-    file_id="1tYeCMKztIZfjdW0l6SZlTKC0fN-VTBI7"
-    destination=model_path
-    download_file_from_google_drive(file_id, destination)
+#         with open(destination, "wb") as f:
+#             for chunk in response.iter_content(CHUNK_SIZE):
+#                 if chunk: # filter out keep-alive new chunks
+#                     f.write(chunk)
+#     file_id="1tYeCMKztIZfjdW0l6SZlTKC0fN-VTBI7"
+#     destination=model_path
+#     download_file_from_google_drive(file_id, destination)
     start_logits, end_logits = get_predictions(model_path+'//pytorch_model.bin')
 
     fin_preds = postprocess_qa_predictions(test, test_features, (start_logits, end_logits))
