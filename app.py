@@ -160,6 +160,6 @@ with st.spinner('Finding Answer...'):
             desty1='ta'
         else:
             desty1='en'
-        st.success(translator.translate(str(answers[0]) ,dest=desty1).text)
+        st.success(answers[0])
 
-# translator.translate(str(answers['answer']) ,dest=desty1).text
+# translator.translate(str(answers[0]) ,dest=desty1).text
