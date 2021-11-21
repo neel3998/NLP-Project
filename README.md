@@ -8,7 +8,13 @@ Image 1
 Image 2
 ![image](https://user-images.githubusercontent.com/74199478/142750780-72ad952f-99d0-4350-8625-fc59322e549a.png)
 
-Download the pre-trained model files that are required to run the application from the below link:
+# Download the pre-trained model files:
+Download xlm model file from [here](https://drive.google.com/file/d/1U7v7LcOUIXzyhBsoPmawqALS3AkfYUVB/view?usp=sharing) and put the 'pytorch_model.bin' file in xlm folder.
+
+Download mbert model file from [here](https://drive.google.com/file/d/1tYeCMKztIZfjdW0l6SZlTKC0fN-VTBI7/view?usp=sharing) and put the 'pytorch_model.bin' file in mbert folder.
+
+Download muril model file from [here](https://drive.google.com/file/d/1L0MufcY2B5f9vhYtGXxb0uXaCSI3xzif/view?usp=sharing) and put the 'pytorch_model.bin' file in muril folder.
+
 
 # Requirements
 streamlit(1.2.0), Command to install: pip install streamlit
