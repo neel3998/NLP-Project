@@ -1,8 +1,6 @@
-
 import streamlit as st
 import base64
 import time
-from transformers import pipeline
 import streamlit.components.v1 as components
 from googletrans import Translator
 import transformers
@@ -37,7 +35,7 @@ def set_png_as_page_bg(png_file):
     
     st.markdown(page_bg_img, unsafe_allow_html=True)
     return
-set_png_as_page_bg('E://Sem 7//NLP//Webapp//Background_image.jpg')
+# set_png_as_page_bg("E://Sem 7//NLP//Webapp//NLP-Project//Background_image.jpg")
 
 components.html(
     """
@@ -94,28 +92,66 @@ def load_model():
     return 
 import ast
 import os
+import pandas as pd
 mod=load_model()
 st.title("Try out our application!!")
 articles=st.text_area('Please enter your article')
 quest =st.text_input('Ask your question based on the article')
-model_name=st.radio('Select Model',['xlm-roberta', 'mbert', 'bert'])
+test = pd.DataFrame(columns = ['id','context', 'question', 'language'])
+model_name=st.radio('Select Model',['xlm-roberta', 'mbert', 'muril'])
 Lang=st.radio('Select Answer Text Language',['Hindi','English','Tamil'])
+test = test.append({'id': '7dihav832', 'context': articles, 'question': quest,'language':Lang}, ignore_index=True)
+test = test.tail(1)
+test.to_csv('test.csv', index=False)
 button=st.button('Answer')
-@st.cache  # 👈 Added this
-def expensive_computation():
+
+#@st.cache  # 👈 Added this
+def expensive_computation_xlm():
     time.sleep(2)  # This makes the function take 2s to run
     # exec(open("final_1.py",encoding='utf-8').read())
-    os.system('final_1.py')
+    print("Opening model file")
+    os.system('python final_xlm.py')
+
     print(2)
-    file1 = open("answers.txt", "r", encoding="utf-8")
+    file1 = open("answers.txt", "r",encoding='utf-8')
     contents = file1.read()
+    print(contents)
     return contents
 
+#@st.cache  # 👈 Added this
+def expensive_computation_muril():
+    time.sleep(2)  # This makes the function take 2s to run
+    # exec(open("final_1.py",encoding='utf-8').read())
+    print("Opening model file")
+    os.system('python final_muril.py')
+
+    print(2)
+    file1 = open("answers.txt", "r",encoding='utf-8')
+    contents = file1.read()
+    print(contents)
+    return contents
+
+def expensive_computation_mbert():
+    time.sleep(2)  # This makes the function take 2s to run
+    # exec(open("final_1.py",encoding='utf-8').read())
+    print("Opening model file")
+    os.system('python final_mbert.py')
+
+    print(2)
+    file1 = open("answers.txt", "r",encoding='utf-8')
+    contents = file1.read()
+    print(contents)
+    return contents
 
 
 with st.spinner('Finding Answer...'):
     if button and articles:
-        a=expensive_computation()
+        if model_name == 'xlm-roberta':
+            a = expensive_computation_xlm()
+        elif model_name == 'muril':
+            a = expensive_computation_muril()
+        elif model_name == 'mbert':
+            a = expensive_computation_mbert()
         answers = ast.literal_eval(a)
         
         if Lang=='Hindi':
@@ -124,6 +160,6 @@ with st.spinner('Finding Answer...'):
             desty1='ta'
         else:
             desty1='en'
-        
-        st.success(answers)
+        st.success(translator.translate(str(answers[0]) ,dest=desty1).text)
+
 # translator.translate(str(answers['answer']) ,dest=desty1).text
