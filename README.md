@@ -29,7 +29,7 @@ numpy, Command to install: pip install numpy
 
 # How to run the app
 1. Clone the repository
-2. Put the downloaded pre-trained models in the same folder as app.py
+2. Put the downloaded pre-trained model files as instructed above.
 3. Run the following command in the terminal: "streamlit run app.py"
 
 # How to experiment
