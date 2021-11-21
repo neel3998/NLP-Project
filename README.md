@@ -5,7 +5,11 @@ Download the pre-trained model files that are required to run the application fr
 # Requirements
 streamlit(1.2.0), Command to install: pip install streamlit
 
-transformers(4.12.3), Command to install: pip install transformers[tf-cpu]
+transformers(4.12.4), Command to install: pip install transformers[tf-cpu]
+
+torch, command to install: pip install torch
+
+sklearn, command to install: pip install scikit-learn
 
 numpy, Command to install: pip install numpy
 
